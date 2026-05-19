@@ -18,11 +18,7 @@ The environment is strictly orchestrated within an isolated hypervisor network f
 
 The security baseline was validated by executing distinct threat vectors to analyze how Unix daemons handle authentication and system state modifications.
 
-### 1. Reconnaissance: Service Discovery (`T1046`)
-* **Vector:** Network scanning via target port interrogation using Nmap.
-* **Analysis:** Validated network footprint detection and telemetry logging through standard firewall/connection drop logs in syslog pipelines.
-
-### 2. Credential Access: SSH Brute-Force (`T1110`)
+### 1. Credential Access: SSH Brute-Force (`T1110`)
 * **Vector:** Automated multi-threaded dictionary attack targeting port 22.
 * **Telemetry Path:** Handled by the Linux Pluggable Authentication Modules (`PAM`) subsystem and logged into `/var/log/auth.log` under the `sshd` session context.
 * **SIEM Correlation:** Triggered **Wazuh Rule ID 2502** (*"syslog: User missed the password more than one time"*).
@@ -38,7 +34,7 @@ The security baseline was validated by executing distinct threat vectors to anal
   }
 }
 ```
-### 3. Persistence: Unauthorized Account Creation (`T1136`)
+### 2. Persistence: Unauthorized Account Creation (`T1136`)
 * **Vector:** Adversary attempting to create a local user backdoor command (`useradd hacker`) to maintain administrative hold.
 * **Telemetry Path:** Logged directly by core system hooks and ingested through systemd service managers via `journald`.
 * **SIEM Correlation:** Triggered **Wazuh Rule ID 5902** (*"New user added to the system"*), isolating parameters such as UID, GID, and new directory setups.
