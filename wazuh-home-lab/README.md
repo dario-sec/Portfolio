@@ -53,3 +53,14 @@ The security baseline was validated by executing distinct threat vectors to anal
     "mitre": { "id": "T1136", "tactic": "Persistence" }
   }
 }
+```
+---
+
+## 📊 Lab Findings & Incident Response Takeaways
+
+* **Log Centralization Works:** The unified core agent smoothly managed data streaming from the host subsystem to the dashboard with low resource usage.
+* **Structured Data is Key:** Parsing raw server text logs into clear JSON telemetry allows security tools to read, filter, and alert on incidents instantly.
+* **Defensive Baseline:** Studying the raw rule logic inside the SIEM proved that proper system defense requires deep knowledge of OS log structures.
+
+---
+*Developed as part of the High School Capstone Academic Portfolio ("Capolavoro").*
